@@ -31,20 +31,23 @@ public class DropletColliderInteraction : MonoBehaviour
 		if (timesTouchedCollider == 1)
 		{
 			var emission = rainParticleSystem.emission;
-			emission.rateOverTime = 100f;
+			emission.rateOverTime = 600f;
 		}
 
 		if (timesTouchedCollider == 2)
 		{
 			var emission = rainParticleSystem.emission;
-			emission.rateOverTime = 350f;
+			emission.rateOverTime = 800f;
 		}
 
 		if (timesTouchedCollider == 3)
 		{
 			var emission = rainParticleSystem.emission;
-			emission.rateOverTime = 700f;
+			emission.rateOverTime = 1000f;
 		}
+
+
+
 
 
 		//currentContactObject.SetActive(false);
