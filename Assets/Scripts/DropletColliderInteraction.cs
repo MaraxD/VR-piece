@@ -18,24 +18,24 @@ public class DropletColliderInteraction : MonoBehaviour
 
 	private float dropStartTime;
 
-	/*void Update()
+    private void Start()
+    {
+		dropStartTime = Time.time; //get the current time (seconds) when the object appears
+	}
+
+    void Update()
     {
         // if the user did not touch the droplet, after a certain period, make it dissapear and go to the next droplet
-        if (currentContactObject.activeSelf)
+		Debug.Log("time elapsed:" + (Time.time - dropStartTime));
+        if (Time.time - dropStartTime > 10f)
         {
-			// get the current time when the object activates
-			dropStartTime = Time.time;
-			Debug.Log("current frame:" + Time.time);
-            if (Time.time - dropStartTime > 20f)
-            {
-				currentContactObject.SetActive(false);
-				nextContactObject.SetActive(true);
-			}
+            currentContactObject.SetActive(false);
+            nextContactObject.SetActive(true);
+        }
 
-		}
-    }*/
+    }
 
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
 	{
 
 		onContactParticleSystem.Play();
@@ -58,5 +58,5 @@ public class DropletColliderInteraction : MonoBehaviour
 		}
 
 		timesTouchedCollider++;
-	}
+	}
 }
