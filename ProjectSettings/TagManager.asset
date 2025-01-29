@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Droplets
+  - RoomLight
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
