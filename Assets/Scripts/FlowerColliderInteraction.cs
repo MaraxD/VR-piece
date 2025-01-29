@@ -5,21 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class FlowerColliderInteraction : MonoBehaviour
 {
+    public string text;
     private PanelManager panelManager;
     private void Start()
     {
         panelManager = PanelManager.Instance;
-        Debug.Log("flower created");
 	}
 
-    void Update()
-    {
-    }
-
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay()
 	{
-        Debug.Log("flower triggered");
-        panelManager.ShowPanel(0);
-
+        panelManager.ShowPanel(text);
     }
 }

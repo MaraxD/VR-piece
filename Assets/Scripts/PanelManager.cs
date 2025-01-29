@@ -1,42 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class PanelManager : Singleton<PanelManager>
 {
-    public List<PanelModel> panels;
-    private PanelModel _currentPanel;
+    public Canvas panelRef;
+    public TMP_Text text;
+    public GameObject curvedCanvas;
 
-    public void ShowPanel(int panelID) {
-        Debug.Log("show panel");
-
-        if(_currentPanel != null) {
-            return;
-        }
-        
-        PanelModel panelModel = panels.FirstOrDefault(panel => panel.panelID == panelID);
-
-        if(panelModel == null) {
-            Debug.LogError($"Panel = {panelID} does not exist");
-            return;
-        }
-
-        var newInstance = Instantiate(panelModel.prefab, transform);
-
-        _currentPanel = new PanelModel{
-            panelID = panelID,
-            prefab = newInstance
-        };
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void ShowPanel(string newText) {
+        text.SetText(newText);
+        curvedCanvas.SetActive(true);
+        // curvedCanvas.transform.rotation = panelRef.worldCamera.transform.rotation;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void ClosePanel() {
+        curvedCanvas.SetActive(false);
     }
 }
