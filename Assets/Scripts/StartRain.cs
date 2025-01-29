@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartRain : MonoBehaviour
 {
@@ -11,13 +10,11 @@ public class StartRain : MonoBehaviour
 
     void playRain()
     {
-        SceneManager.LoadScene("Rain");
+        rainParticleSystem.Play();
 
-        // rainParticleSystem.Play();
-
-        // // wait a couple of seconds, start showing the first drop
-        // StartCoroutine(Waiter());
-        // firstDrop.SetActive(true);
+        // wait a couple of seconds, start showing the first drop
+        StartCoroutine(Waiter());
+        firstDrop.SetActive(true);
     }
 
     IEnumerator Waiter()
