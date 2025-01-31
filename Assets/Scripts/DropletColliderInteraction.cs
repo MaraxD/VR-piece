@@ -9,6 +9,7 @@ public class DropletColliderInteraction : MonoBehaviour
 	public GameObject nextContactObject;
 
 	public AudioSource waterSound;
+	public AudioSource missedDropSound;
 
 	public ParticleSystem rainParticleSystem;
 	public ParticleSystem onContactParticleSystem;
@@ -32,7 +33,9 @@ public class DropletColliderInteraction : MonoBehaviour
         {
             currentContactObject.SetActive(false);
             nextContactObject.SetActive(true);
-        }
+			missedDropSound.Play();
+
+		}
 
     }
 

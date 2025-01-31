@@ -6,22 +6,20 @@ public class StartRain : MonoBehaviour
 {
     public ParticleSystem rainParticleSystem;
     public GameObject firstDrop;
-    public int waitTime=105;
+    public AudioSource instructionsSound;
+    public float waitTime=25.7f;
 
     void playRain()
     {
         rainParticleSystem.Play();
+        instructionsSound.Play();
 
         // wait a couple of seconds, start showing the first drop
-        StartCoroutine(Waiter());
+        Invoke("DelayedAppearance", waitTime);
+    }
+
+    void DelayedAppearance()
+    {
         firstDrop.SetActive(true);
     }
-
-    IEnumerator Waiter()
-    {
-        yield return new WaitForSecondsRealtime(waitTime);
-
-    }
-
-
 }
