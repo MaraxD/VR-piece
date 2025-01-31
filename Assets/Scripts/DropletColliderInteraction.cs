@@ -17,6 +17,7 @@ public class DropletColliderInteraction : MonoBehaviour
 	public static int timesTouchedCollider = 0;
 
 	private float dropStartTime;
+	private float waitTime=2f;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class DropletColliderInteraction : MonoBehaviour
 		currentContactObject.SetActive(false);
 		nextContactObject.SetActive(true);
 
-        if (timesTouchedCollider < 8)
+        if (timesTouchedCollider < 7)
         {
 			rateOverTimeIncrease += 500f;
 			var emission = rainParticleSystem.emission;
@@ -52,11 +53,16 @@ public class DropletColliderInteraction : MonoBehaviour
         }
         else
         {
-			// hide the last object and go to the next scene
-			currentContactObject.SetActive(false);
-			SceneManager.LoadScene("Rain");
+			// wait for 7 seconds and transition to the next scene
+			nextContactObject.SetActive(false);
+			Invoke("DelayedTransition", waitTime);
 		}
 
 		timesTouchedCollider++;
+	}
+
+	void DelayedTransition()
+    {
+		SceneManager.LoadScene("Rain");
 	}
 }
