@@ -14,12 +14,16 @@ public class StartRain : MonoBehaviour
         rainParticleSystem.Play();
         instructionsSound.Play();
 
-        // wait a couple of seconds, start showing the first drop
-        Invoke("DelayedAppearance", waitTime);
+        StartCoroutine(waitForSound(firstDrop, instructionsSound));
     }
 
-    void DelayedAppearance()
+    public static IEnumerator waitForSound(GameObject drop, AudioSource audioSource)
     {
-        firstDrop.SetActive(true);
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        drop.SetActive(true); //after audio has finished playing, reveal the first drop
     }
 }
