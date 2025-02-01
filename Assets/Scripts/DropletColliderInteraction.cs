@@ -16,7 +16,8 @@ public class DropletColliderInteraction : MonoBehaviour
 	public ParticleSystem onContactParticleSystem;
 
 	public static float rateOverTimeIncrease = 100f;
-	public static int timesTouchedCollider = 0, numberOfRaindrops;
+	public static int timesTouchedCollider = 0;
+	public int numberOfRaindrops;
 
 	private float dropStartTime;
 	private float waitTime=2f;
